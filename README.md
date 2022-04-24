@@ -1,3 +1,3 @@
-# linter-template
+# Coffeeshop API
 
-Template repository to hold linter configurations
+An API written in CoffeeScript using express
