@@ -10,7 +10,8 @@
       {
         "extensions": [
           ".js",
-          ".jsx"
+          ".jsx",
+          ".coffee"
         ]
       }
     ],

@@ -56,6 +56,7 @@ plugins:
       extensions:
         - .js
         - .jsx
+        - .coffee
   fixme:
     enabled: true
   nodesecurity:
