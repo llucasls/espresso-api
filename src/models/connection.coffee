@@ -10,10 +10,12 @@ options =
 
 dbConnection = () ->
   client.connect MONGODB_URL, options
-    .then (connection) ->
-      connection.db DB_NAME
+    .then (conn) ->
+      conn.db DB_NAME
     .catch (err) ->
       console.error err.message
       process.exit 1
 
-export default dbConnection
+db = dbConnection()
+
+export default db
