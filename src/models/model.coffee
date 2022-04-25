@@ -1,24 +1,26 @@
 import { ObjectId } from 'mongodb'
 import db from './connection.js'
 
-# create = async (obj) ->
-#   document = await connection
-#     .collection 'products'
-#     .insertOne obj
-#   document
+class Model
+  constructor: (@collection, @db = db) ->
 
-create = (obj) ->
-  connection = await db
-    .then (conn) ->
-      conn.collection 'drinks'
-        .insertOne obj
-  connection
+  create: (document) ->
+    table = @collection
+    result = await @db
+      .then (conn) ->
+        conn.collection table
+          .insertOne document
+    result
 
-export { create }
+export default Model
 
-export default create
-#
-# insertProduct = (product) =>
+###
+{
+  acknowledged: true,
+  insertedId: new ObjectId("6266c07bf1aec1acfe6d3af7")
+}
+###
+
 #   connection()
 #     .then((conn) => conn.collection('products').insertOne(product))
 

@@ -1,9 +1,10 @@
 import 'dotenv/config'
 import express from 'express'
-import { create } from './models/model.js'
+import Model from './models/model.js'
 
 app = express()
 port = process.env.PORT or 3000
+drinks = new Model 'drinks'
 
 app.use express.json()
 
@@ -13,7 +14,7 @@ app.get '/', (req, res) ->
     .send 'Coffee Shop opening soon'
 
 insert = (req, res) ->
-  create req.body
+  drinks.create req.body
     .then (drink) ->
       res
         .status 201
