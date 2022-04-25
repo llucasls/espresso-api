@@ -21,7 +21,10 @@
   },
   "homepage": "https://github.com/Lucas-L-S-Haine/coffeeshop-api#readme",
   "devDependencies": {
-    "coffeescript": "^2.7.0"
+    "coffeescript": "^2.7.0",
+    "eslint": "^8.14.0",
+    "eslint-plugin-coffeescript": "^1.0.0",
+    "eslint-plugin-import": "^2.26.0"
   },
   "dependencies": {
     "dotenv": "^16.0.0",
