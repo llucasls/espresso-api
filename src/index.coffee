@@ -13,14 +13,14 @@ app.get '/', (req, res) ->
     .status 200
     .send 'Coffee Shop opening soon'
 
-insert = (req, res) ->
+create = (req, res) ->
   drinks.create req.body
     .then (drink) ->
       res
         .status 201
         .send drink
 
-app.post('/drinks', insert)
+app.post('/drinks', create)
 
 app.listen port, () ->
   console.log "Application online on port #{port}."
