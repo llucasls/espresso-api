@@ -8,7 +8,8 @@ class Model
     table = @collection
     result = await @db
       .then (conn) ->
-        conn.collection table
+        conn
+          .collection table
           .insertOne document
     result
 
