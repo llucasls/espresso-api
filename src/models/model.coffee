@@ -13,6 +13,16 @@ class Model
           .insertOne document
     result
 
+  read: (query) ->
+    table = @collection
+    result = await @db
+      .then (conn) ->
+        conn
+          .collection table
+          .find query
+          .toArray()
+    result
+
 export default Model
 
 ###
