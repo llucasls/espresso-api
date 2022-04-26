@@ -8,7 +8,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint --ext .coffee src/",
     "prestart": "coffee -o build/ -c src/",
-    "start": "node ."
+    "start": "node .",
+    "compile": "coffee -o build/ -c src/"
   },
   "repository": {
     "type": "git",
