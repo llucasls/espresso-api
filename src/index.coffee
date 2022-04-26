@@ -21,7 +21,7 @@ create = (req, res) ->
         .send drink
 
 read = (req, res) ->
-  drinks.read req.body
+  drinks.read req.query
     .then (drinks) ->
       res
         .status 200
