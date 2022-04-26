@@ -20,7 +20,15 @@ create = (req, res) ->
         .status 201
         .send drink
 
+read = (req, res) ->
+  drinks.read req.body
+    .then (drinks) ->
+      res
+        .status 200
+        .json drinks
+
 app.post('/drinks', create)
+app.get('/drinks', read)
 
 app.listen port, () ->
   console.log "Application online on port #{port}."
