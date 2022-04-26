@@ -1,6 +1,8 @@
 import 'dotenv/config'
 import express from 'express'
 import Model from './models/model.js'
+import errorHandler from './middlewares/errorHandler.js'
+import notFoundHandler from './middlewares/notFoundHandler.js'
 
 app = express()
 port = process.env.PORT or 3000
@@ -29,6 +31,9 @@ read = (req, res) ->
 
 app.post('/drinks', create)
 app.get('/drinks', read)
+
+app.use errorHandler
+app.use notFoundHandler
 
 app.listen port, () ->
   console.log "Application online on port #{port}."
