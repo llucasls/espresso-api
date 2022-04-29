@@ -36,9 +36,17 @@ readOne = (req, res) ->
         .status 200
         .json drink
 
+update = (req, res) ->
+  drinks.update req.params.id, req.body
+    .then (drink) ->
+      res
+        .status 200
+        .json drink
+
 app.post('/drinks', create)
 app.get('/drinks', read)
 app.get('/drinks/:id', readOne)
+app.put('/drinks/:id', update)
 
 app.use errorHandler
 app.use notFoundHandler

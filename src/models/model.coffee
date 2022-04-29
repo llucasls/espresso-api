@@ -32,6 +32,14 @@ class Model
           .findOne new ObjectId id
     result
 
+  update: (id, document) ->
+    table = @collection
+    result = await @db
+      .then (conn) ->
+        conn
+          .collection table
+          .updateOne ({ _id: new ObjectId id }), { $set: { document... } }
+    result
 
 
 export default Model
