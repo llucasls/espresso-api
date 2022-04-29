@@ -25,17 +25,5 @@ class Model
 
 export default Model
 
-###
-{
-  acknowledged: true,
-  insertedId: new ObjectId("6266c07bf1aec1acfe6d3af7")
-}
-###
 
-#   connection()
-#     .then((conn) => conn.collection('products').insertOne(product))
 
-# readOne
-# readMany
-# update
-# destroy
