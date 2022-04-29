@@ -41,5 +41,13 @@ class Model
           .updateOne ({ _id: new ObjectId id }), { $set: { document... } }
     result
 
+  delete: (id) ->
+    table = @collection
+    result = await @db
+      .then (conn) ->
+        conn
+          .collection table
+          .deleteOne { _id: new ObjectId id }
+    result
 
 export default Model

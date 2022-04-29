@@ -43,10 +43,18 @@ update = (req, res) ->
         .status 200
         .json drink
 
+destroy = (req, res) ->
+  drinks.delete req.params.id
+    .then (drink) ->
+      res
+        .status 200
+        .json drink
+
 app.post('/drinks', create)
 app.get('/drinks', read)
 app.get('/drinks/:id', readOne)
 app.put('/drinks/:id', update)
+app.delete('/drinks/:id', destroy)
 
 app.use errorHandler
 app.use notFoundHandler
