@@ -29,8 +29,16 @@ read = (req, res) ->
         .status 200
         .json drinks
 
+readOne = (req, res) ->
+  drinks.readOne req.params.id
+    .then (drink) ->
+      res
+        .status 200
+        .json drink
+
 app.post('/drinks', create)
 app.get('/drinks', read)
+app.get('/drinks/:id', readOne)
 
 app.use errorHandler
 app.use notFoundHandler

@@ -23,7 +23,15 @@ class Model
           .toArray()
     result
 
+  readOne: (id) ->
+    table = @collection
+    result = await @db
+      .then (conn) ->
+        conn
+          .collection table
+          .findOne new ObjectId id
+    result
+
+
+
 export default Model
-
-
-
