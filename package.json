@@ -1,7 +1,7 @@
 {
   "name": "espresso-api",
   "version": "0.1.0",
-  "description": "An API written in CoffeeScript using express",
+  "description": "An API written in CoffeeScript using express.js and MongoDB",
   "main": "build/index.js",
   "type": "module",
   "scripts": {
