@@ -2,7 +2,7 @@ import 'dotenv/config'
 import { MongoClient as client } from 'mongodb'
 
 MONGODB_URL = "mongodb://#{process.env.HOST or 'mongodb'}:27017"
-DB_NAME = 'CoffeeShop'
+DB_NAME = 'Espresso'
 
 options =
   useNewUrlParser: yes
