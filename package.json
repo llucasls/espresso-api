@@ -1,5 +1,5 @@
 {
-  "name": "coffeeshop-api",
+  "name": "espresso-api",
   "version": "1.0.0",
   "description": "An API written in CoffeeScript using express",
   "main": "build/index.js",
