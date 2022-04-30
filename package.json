@@ -1,6 +1,6 @@
 {
   "name": "espresso-api",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "An API written in CoffeeScript using express",
   "main": "build/index.js",
   "type": "module",
