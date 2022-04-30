@@ -5,6 +5,7 @@
   "main": "build/index.js",
   "type": "module",
   "scripts": {
+    "pretest": "npm run compile",
     "test": "mocha -r coffeescript/register test/**/*.{test,spec}.coffee --exit -t 60000",
     "lint": "eslint --ext .coffee src/",
     "prestart": "npm run compile",
