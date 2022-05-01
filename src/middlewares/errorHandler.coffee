@@ -1,6 +1,6 @@
 errorHandler = (err, _req, res, _next) ->
   res
     .status err.status
-    .send err.message
+    .send error: err.message
 
 export default errorHandler
