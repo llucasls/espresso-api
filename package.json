@@ -11,7 +11,14 @@
     "start": "node .",
     "precompile": "npm run clean",
     "compile": "coffee -o build/ -c src/",
-    "clean": "rm -rf build/*"
+    "clean": "rm -rf build/*",
+    "dev": "nodemon"
+  },
+  "nodemonConfig": {
+    "ignore": ["test/*", "docs/*"],
+    "ext": "coffee,litcoffee,js,cjs,mjs,json",
+    "watch": ["src/"],
+    "exec": "npm start"
   },
   "repository": {
     "type": "git",
