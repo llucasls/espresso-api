@@ -7,11 +7,18 @@
   "scripts": {
     "test": "mocha -r coffeescript/register test/**/*.{test,spec}.coffee --exit -t 60000",
     "lint": "eslint --ext .coffee src/",
-    "prestart": "npm run compile",
+    "prestart": "npm run compile --silent",
     "start": "node .",
-    "precompile": "npm run clean",
+    "precompile": "npm run clean --silent",
     "compile": "coffee -o build/ -c src/",
-    "clean": "rm -rf build/*"
+    "clean": "rm -rf build/*",
+    "dev": "nodemon"
+  },
+  "nodemonConfig": {
+    "ignore": ["test/*", "docs/*"],
+    "ext": "coffee,litcoffee,js,cjs,mjs,json",
+    "watch": ["src/"],
+    "exec": "npm start --silent"
   },
   "repository": {
     "type": "git",
@@ -31,6 +38,7 @@
     "eslint-plugin-import": "^2.26.0",
     "expect.js": "^0.3.1",
     "mocha": "^9.2.2",
+    "nodemon": "^2.0.16",
     "sinon": "^13.0.2"
   },
   "dependencies": {
