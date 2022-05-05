@@ -1,7 +1,7 @@
 import Service from '../services/service.js'
 
 class Controller
-  constructor: (@service = new Service) ->
+  constructor: (@route, @service = new Service) ->
 
   create: (req, res, next) ->
     @service
