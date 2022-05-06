@@ -12,7 +12,7 @@ class Controller
           .json document
       .catch next
 
-  read: (req, res) ->
+  read: (req, res, next) ->
     @service
       .read req.query
       .then (drinks) ->
@@ -21,7 +21,7 @@ class Controller
           .json drinks
       .catch next
 
-  readOne: (req, res) ->
+  readOne: (req, res, next) ->
     @service
       .readOne req.params.id
       .then (drink) ->
@@ -30,7 +30,7 @@ class Controller
           .json drink
       .catch next
 
-  update: (req, res) ->
+  update: (req, res, next) ->
     @service
       .update req.params.id, req.body
       .then (drink) ->
@@ -39,7 +39,7 @@ class Controller
           .json drink
       .catch next
 
-  delete: (req, res) ->
+  delete: (req, res, next) ->
     @service
       .delete req.params.id
       .then (drink) ->
