@@ -16,9 +16,14 @@
     "dev": "nodemon"
   },
   "nodemonConfig": {
-    "ignore": ["test/*", "docs/*"],
+    "ignore": [
+      "test/*",
+      "docs/*"
+    ],
     "ext": "coffee,litcoffee,js,cjs,mjs,json",
-    "watch": ["src/"],
+    "watch": [
+      "src/"
+    ],
     "exec": "npm start --silent"
   },
   "repository": {
@@ -33,6 +38,7 @@
   },
   "homepage": "https://github.com/Lucas-L-S-Haine/espresso-api#readme",
   "devDependencies": {
+    "axios": "^0.27.2",
     "coffeescript": "^2.7.0",
     "eslint": "^8.14.0",
     "eslint-plugin-coffeescript": "^1.0.0",
