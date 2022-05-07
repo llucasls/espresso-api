@@ -1,4 +1,6 @@
 expect = require 'expect.js'
+axios = require 'axios'
+require 'dotenv/config'
 
 describe 'Test drinks model', ->
 
