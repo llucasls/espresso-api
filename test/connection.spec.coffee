@@ -15,6 +15,6 @@ describe 'Test connection to server', ->
       .to.be 'OK'
 
   it 'should return a response from "/" route', ->
-    { data: response } = await axios.get "http://#{host}:#{port}"
-    expect response
+    { data: message } = await axios.get "http://#{host}:#{port}"
+    expect message
       .to.be 'Coffee Shop opening soon'
