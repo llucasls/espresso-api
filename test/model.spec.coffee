@@ -2,6 +2,9 @@ expect = require 'expect.js'
 axios = require 'axios'
 require 'dotenv/config'
 
+host = process.env.HOST or '127.0.0.1'
+port = process.env.PORT or 3000
+
 describe 'Test drinks model', ->
 
   it 'should be a model', ->
