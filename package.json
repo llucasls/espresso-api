@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "preinstall": "git config commit.template .gitcommit",
-    "test": "mocha -r coffeescript/register test/**/*.{test,spec}.coffee --exit -t 60000",
+    "test": "scripts/test-mocha.sh",
     "lint": "eslint --ext .coffee src/",
     "prestart": "npm run compile --silent",
     "start": "node .",
