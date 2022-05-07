@@ -26,6 +26,21 @@
     ],
     "exec": "npm start --silent"
   },
+  "mocha": {
+    "diff": true,
+    "color": true,
+    "inline-diff": true,
+    "timeout": 60000,
+    "recursive": true,
+    "reporter": "spec",
+    "extension": "coffee",
+    "exit": true,
+    "require": [
+      "coffeescript/register",
+      "dotenv/config",
+      "expect.js"
+    ]
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Lucas-L-S-Haine/espresso-api.git"

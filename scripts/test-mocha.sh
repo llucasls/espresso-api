@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 if [ -n "$1" ]; then
-    mocha -r coffeescript/register test/**/*.spec.coffee --exit -t 60000 -g "$@"
+    mocha -g "$@"
 else
-    mocha -r coffeescript/register test/**/*.spec.coffee --exit -t 60000
+    mocha 
 fi
