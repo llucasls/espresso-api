@@ -60,4 +60,4 @@ app.use errorHandler
 app.use notFoundHandler
 
 app.listen port, () ->
-  console.log "Application online on port #{port}."
+  console.log "Server listening on port \x1b[03;94m#{port}\x1b[00m."
