@@ -4,7 +4,7 @@ import bodyParser from 'body-parser'
 import Model from './models/model.js'
 import errorHandler from './middlewares/errorHandler.js'
 import notFoundHandler from './middlewares/notFoundHandler.js'
-import parseValue from './middlewares/parseValue.js'
+import parseData from './middlewares/parseData.js'
 import parseYaml from './middlewares/parseYaml.js'
 
 app = express()
@@ -15,7 +15,7 @@ app.use bodyParser.json()
 app.use bodyParser.urlencoded extended: yes
 app.use bodyParser.text type: 'text/yaml'
 
-app.use parseValue
+app.use parseData
 app.use parseYaml
 
 app.get '/', (req, res) ->
