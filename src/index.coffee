@@ -1,14 +1,22 @@
 import 'dotenv/config'
 import express from 'express'
+import bodyParser from 'body-parser'
 import Model from './models/model.js'
 import errorHandler from './middlewares/errorHandler.js'
 import notFoundHandler from './middlewares/notFoundHandler.js'
+import parseValue from './middlewares/parseValue.js'
+import parseYaml from './middlewares/parseYaml.js'
 
 app = express()
 port = process.env.PORT or 3000
 drinks = new Model 'drinks'
 
-app.use express.json()
+app.use bodyParser.json()
+app.use bodyParser.urlencoded extended: yes
+app.use bodyParser.text type: 'text/yaml'
+
+app.use parseValue
+app.use parseYaml
 
 app.get '/', (req, res) ->
   res
@@ -60,4 +68,4 @@ app.use errorHandler
 app.use notFoundHandler
 
 app.listen port, () ->
-  console.log "Application online on port #{port}."
+  console.log "Server listening on port \x1b[03;94m#{port}\x1b[00m."
