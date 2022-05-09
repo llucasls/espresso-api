@@ -9,7 +9,7 @@ app = express()
 port = process.env.PORT or 3000
 drinks = new Model 'drinks'
 
-app.use express.json()
+app.use bodyParser.json()
 
 app.get '/', (req, res) ->
   res
