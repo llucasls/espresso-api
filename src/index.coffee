@@ -10,6 +10,7 @@ port = process.env.PORT or 3000
 drinks = new Model 'drinks'
 
 app.use bodyParser.json()
+app.use bodyParser.urlencoded extended: yes
 
 app.get '/', (req, res) ->
   res
