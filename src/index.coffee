@@ -1,5 +1,6 @@
 import 'dotenv/config'
 import express from 'express'
+import bodyParser from 'body-parser'
 import Model from './models/model.js'
 import errorHandler from './middlewares/errorHandler.js'
 import notFoundHandler from './middlewares/notFoundHandler.js'
