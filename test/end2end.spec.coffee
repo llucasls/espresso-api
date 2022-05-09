@@ -10,6 +10,6 @@ describe 'Perform and end to end test', ->
     # { status } = await axios.delete "http://#{host}:#{port}/drinks"
     { data } = await axios.get "http://#{host}:#{port}/drinks"
     expect status
-      .to.be 204
+      .to.be 200
     expect data
       .to.be '[]'
