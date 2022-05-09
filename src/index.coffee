@@ -5,6 +5,7 @@ import Model from './models/model.js'
 import errorHandler from './middlewares/errorHandler.js'
 import notFoundHandler from './middlewares/notFoundHandler.js'
 import parseValue from './middlewares/parseValue.js'
+import parseYaml from './middlewares/parseYaml.js'
 
 app = express()
 port = process.env.PORT or 3000
@@ -12,8 +13,10 @@ drinks = new Model 'drinks'
 
 app.use bodyParser.json()
 app.use bodyParser.urlencoded extended: yes
+app.use bodyParser.text type: 'text/yaml'
 
 app.use parseValue
+app.use parseYaml
 
 app.get '/', (req, res) ->
   res
