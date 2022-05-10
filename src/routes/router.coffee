@@ -1,7 +1,7 @@
 import express from 'express'
 
 class Router
-    constructor: () ->
+    constructor: ->
         @router = express.Router()
 
     addRoute: (controller, route = controller.route) ->

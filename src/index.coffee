@@ -67,5 +67,5 @@ app.delete('/drinks/:id', destroy)
 app.use errorHandler
 app.use notFoundHandler
 
-app.listen port, () ->
+app.listen port, ->
     console.log "Server listening on port \x1b[03;94m#{port}\x1b[00m."

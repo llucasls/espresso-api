@@ -8,7 +8,7 @@ options =
     useNewUrlParser: yes
     useUnifiedTopology: yes
 
-dbConnection = () ->
+dbConnection = ->
     client.connect MONGODB_URL, options
         .then (conn) ->
             conn.db DB_NAME

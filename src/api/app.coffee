@@ -7,7 +7,7 @@ class App
         @app.use express.json()
 
     startServer: (port) ->
-        @app.listen port, () ->
+        @app.listen port, ->
             console.log "Server listening on port \x1b[03;94m#{port}\x1b[00m!"
 
     addRouter: (router) ->
