@@ -38,7 +38,7 @@ class Model
             .then (conn) ->
                 conn
                     .collection table
-                    .updateOne ({ _id: new ObjectId id }), { $set: { document... } }
+                    .updateOne { _id: new ObjectId id }, $set: { document... }
         result
 
     delete: (id) ->
