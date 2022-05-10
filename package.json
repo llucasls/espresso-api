@@ -7,7 +7,7 @@
   "scripts": {
     "preinstall": "git config commit.template .gitcommit",
     "test": "scripts/test-mocha.sh",
-    "lint": "eslint --ext .coffee src/",
+    "lint": "coffeelint src/",
     "prestart": "npm run compile --silent",
     "start": "node .",
     "precompile": "npm run clean --silent",
