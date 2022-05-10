@@ -2,52 +2,52 @@ import { ObjectId } from 'mongodb'
 import db from './connection.js'
 
 class Model
-  constructor: (@collection, @db = db) ->
+    constructor: (@collection, @db = db) ->
 
-  create: (document) ->
-    table = @collection
-    result = await @db
-      .then (conn) ->
-        conn
-          .collection table
-          .insertOne document
-    result
+    create: (document) ->
+        table = @collection
+        result = await @db
+            .then (conn) ->
+                conn
+                    .collection table
+                    .insertOne document
+        result
 
-  read: (query) ->
-    table = @collection
-    result = await @db
-      .then (conn) ->
-        conn
-          .collection table
-          .find query
-          .toArray()
-    result
+    read: (query) ->
+        table = @collection
+        result = await @db
+            .then (conn) ->
+                conn
+                    .collection table
+                    .find query
+                    .toArray()
+        result
 
-  readOne: (id) ->
-    table = @collection
-    result = await @db
-      .then (conn) ->
-        conn
-          .collection table
-          .findOne new ObjectId id
-    result
+    readOne: (id) ->
+        table = @collection
+        result = await @db
+            .then (conn) ->
+                conn
+                    .collection table
+                    .findOne new ObjectId id
+        result
 
-  update: (id, document) ->
-    table = @collection
-    result = await @db
-      .then (conn) ->
-        conn
-          .collection table
-          .updateOne ({ _id: new ObjectId id }), { $set: { document... } }
-    result
+    update: (id, document) ->
+        table = @collection
+        result = await @db
+            .then (conn) ->
+                conn
+                    .collection table
+                    .updateOne ({ _id: new ObjectId id }), { $set: { document... } }
+        result
 
-  delete: (id) ->
-    table = @collection
-    result = await @db
-      .then (conn) ->
-        conn
-          .collection table
-          .deleteOne { _id: new ObjectId id }
-    result
+    delete: (id) ->
+        table = @collection
+        result = await @db
+            .then (conn) ->
+                conn
+                    .collection table
+                    .deleteOne { _id: new ObjectId id }
+        result
 
 export default Model

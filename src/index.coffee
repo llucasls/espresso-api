@@ -19,44 +19,44 @@ app.use parseData
 app.use parseYaml
 
 app.get '/', (req, res) ->
-  res
-    .status 200
-    .send 'Coffee Shop opening soon'
+    res
+        .status 200
+        .send 'Coffee Shop opening soon'
 
 create = (req, res) ->
-  drinks.create req.body
-    .then (drink) ->
-      res
-        .status 201
-        .send drink
+    drinks.create req.body
+        .then (drink) ->
+            res
+                .status 201
+                .send drink
 
 read = (req, res) ->
-  drinks.read req.query
-    .then (drinks) ->
-      res
-        .status 200
-        .json drinks
+    drinks.read req.query
+        .then (drinks) ->
+            res
+                .status 200
+                .json drinks
 
 readOne = (req, res) ->
-  drinks.readOne req.params.id
-    .then (drink) ->
-      res
-        .status 200
-        .json drink
+    drinks.readOne req.params.id
+        .then (drink) ->
+            res
+                .status 200
+                .json drink
 
 update = (req, res) ->
-  drinks.update req.params.id, req.body
-    .then (drink) ->
-      res
-        .status 200
-        .json drink
+    drinks.update req.params.id, req.body
+        .then (drink) ->
+            res
+                .status 200
+                .json drink
 
 destroy = (req, res) ->
-  drinks.delete req.params.id
-    .then (drink) ->
-      res
-        .status 200
-        .json drink
+    drinks.delete req.params.id
+        .then (drink) ->
+            res
+                .status 200
+                .json drink
 
 app.post('/drinks', create)
 app.get('/drinks', read)
@@ -68,4 +68,4 @@ app.use errorHandler
 app.use notFoundHandler
 
 app.listen port, () ->
-  console.log "Server listening on port \x1b[03;94m#{port}\x1b[00m."
+    console.log "Server listening on port \x1b[03;94m#{port}\x1b[00m."
