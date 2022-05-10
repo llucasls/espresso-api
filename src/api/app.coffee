@@ -19,4 +19,5 @@ class App
     handleError: (middleware) ->
         @app.use middleware
 
+
 export default App

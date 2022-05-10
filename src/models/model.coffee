@@ -50,4 +50,5 @@ class Model
                     .deleteOne { _id: new ObjectId id }
         result
 
+
 export default Model

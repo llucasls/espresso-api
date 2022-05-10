@@ -12,4 +12,5 @@ class Router
         @router.delete "#{route}/:id", controller.delete
         null
 
+
 export default Router

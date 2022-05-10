@@ -48,4 +48,5 @@ class Controller
                     .json drink
             .catch next
 
+
 export default Controller

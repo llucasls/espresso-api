@@ -24,4 +24,5 @@ class Service
     delete: (id) ->
         @model.delete id
 
+
 export default Service
