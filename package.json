@@ -8,9 +8,9 @@
     "preinstall": "git config commit.template .gitcommit",
     "test": "scripts/test-mocha.sh",
     "lint": "coffeelint src/",
-    "prestart": "npm run compile --silent",
+    "prestart": "yarn run compile",
     "start": "node .",
-    "precompile": "npm run clean --silent",
+    "precompile": "yarn run clean",
     "compile": "coffee -o build/ -c src/",
     "clean": "rm -rf build/*",
     "dev": "nodemon"
@@ -24,7 +24,7 @@
     "watch": [
       "src/"
     ],
-    "exec": "npm start --silent"
+    "exec": "scripts/run-server.sh"
   },
   "mocha": {
     "diff": true,
