@@ -1,11 +1,13 @@
 import 'dotenv/config'
 import express from 'express'
 import bodyParser from 'body-parser'
+import yaml from 'yaml'
 import Model from './models/model.js'
 import errorHandler from './middlewares/errorHandler.js'
 import notFoundHandler from './middlewares/notFoundHandler.js'
 import parseData from './middlewares/parseData.js'
 import parseYaml from './middlewares/parseYaml.js'
+import format from './middlewares/format.js'
 
 app = express()
 port = process.env.PORT or 3000
@@ -31,11 +33,27 @@ create = (req, res) ->
                 .send drink
 
 read = (req, res) ->
-    drinks.read req.query
-        .then (drinks) ->
-            res
-                .status 200
-                .json drinks
+    switch req.format
+        when 'json'
+            drinks.read req.query
+                .then (drinks) ->
+                    res
+                        .status 200
+                        .type 'json'
+                        .send drinks
+        when 'yaml'
+            drinks.read req.query
+                .then (drinks) ->
+                    res
+                        .status 200
+                        .type 'yaml'
+                        .send yaml.stringify drinks
+        else
+            drinks.read req.query
+                .then (drinks) ->
+                    res
+                        .status 200
+                        .json drinks
 
 readOne = (req, res) ->
     drinks.readOne req.params.id
@@ -59,7 +77,7 @@ destroy = (req, res) ->
                 .json drink
 
 app.post('/drinks', create)
-app.get('/drinks', read)
+app.get('/drinks', format, read)
 app.get('/drinks/:id', readOne)
 app.put('/drinks/:id', update)
 app.delete('/drinks/:id', destroy)
