@@ -3,9 +3,6 @@ format = (req, _res, next) ->
         { format: reqFormat, query... } = req.query
         req.query = query
         req.format = reqFormat
-        next()
-    else
-        req.format = 'json'
-        next()
+    next()
 
 export default format
