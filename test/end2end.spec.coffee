@@ -12,4 +12,4 @@ describe 'Perform and end to end test', ->
         expect status
             .to.be 200
         expect data
-            .to.be '[]'
+            .to.eql []
