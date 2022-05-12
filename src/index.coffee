@@ -20,19 +20,20 @@ app.use bodyParser.text type: 'text/yaml'
 app.use parseData
 app.use parseYaml
 
-app.get '/', (req, res) ->
+app.get '/', (req, res, next) ->
     res
         .status 200
         .send 'Coffee Shop opening soon'
 
-create = (req, res) ->
+create = (req, res, next) ->
     drinks.create req.body
         .then (drink) ->
             res
                 .status 201
                 .send drink
+        .catch(next)
 
-# read = (req, res) ->
+# read = (req, res, next) ->
 #     switch req.format
 #         when 'json'
 #             drinks.read req.query
@@ -55,33 +56,37 @@ create = (req, res) ->
 #                         .status 200
 #                         .json drinks
 
-read = (req, res) ->
+read = (req, res, next) ->
     drinks.read req.query
         .then (drinks) ->
             res
                 .status 200
                 .json drinks
+        .catch(next)
 
-readOne = (req, res) ->
+readOne = (req, res, next) ->
     drinks.readOne req.params.id
         .then (drink) ->
             res
                 .status 200
                 .json drink
+        .catch(next)
 
-update = (req, res) ->
+update = (req, res, next) ->
     drinks.update req.params.id, req.body
         .then (drink) ->
             res
                 .status 200
                 .json drink
+        .catch(next)
 
-destroy = (req, res) ->
+destroy = (req, res, next) ->
     drinks.delete req.params.id
         .then (drink) ->
             res
                 .status 200
                 .json drink
+        .catch(next)
 
 app.post('/drinks', create)
 app.get('/drinks', format, read)
