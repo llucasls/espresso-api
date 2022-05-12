@@ -1,4 +1,5 @@
 import { ObjectId } from 'mongodb'
+import { parseValue } from 'query-types'
 import db from './connection.js'
 
 class Model
@@ -19,7 +20,7 @@ class Model
             .then (conn) ->
                 conn
                     .collection table
-                    .find query
+                    .find parseValue query
                     .toArray()
         result
 
