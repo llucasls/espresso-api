@@ -32,28 +32,35 @@ create = (req, res) ->
                 .status 201
                 .send drink
 
+# read = (req, res) ->
+#     switch req.format
+#         when 'json'
+#             drinks.read req.query
+#                 .then (drinks) ->
+#                     res
+#                         .status 200
+#                         .type 'json'
+#                         .send drinks
+#         when 'yaml'
+#             drinks.read req.query
+#                 .then (drinks) ->
+#                     res
+#                         .status 200
+#                         .type 'yaml'
+#                         .send yaml.stringify drinks
+#         else
+#             drinks.read req.query
+#                 .then (drinks) ->
+#                     res
+#                         .status 200
+#                         .json drinks
+
 read = (req, res) ->
-    switch req.format
-        when 'json'
-            drinks.read req.query
-                .then (drinks) ->
-                    res
-                        .status 200
-                        .type 'json'
-                        .send drinks
-        when 'yaml'
-            drinks.read req.query
-                .then (drinks) ->
-                    res
-                        .status 200
-                        .type 'yaml'
-                        .send yaml.stringify drinks
-        else
-            drinks.read req.query
-                .then (drinks) ->
-                    res
-                        .status 200
-                        .json drinks
+    drinks.read req.query
+        .then (drinks) ->
+            res
+                .status 200
+                .json drinks
 
 readOne = (req, res) ->
     drinks.readOne req.params.id
