@@ -6,14 +6,14 @@ port = process.env.PORT or 3000
 
 describe 'Test connection to server', ->
 
-  it 'should return OK status', ->
-    { status, statusText } = await axios.get "http://#{host}:#{port}"
-    expect status
-      .to.be 200
-    expect statusText
-      .to.be 'OK'
+    it 'should return OK status', ->
+        { status, statusText } = await axios.get "http://#{host}:#{port}"
+        expect status
+            .to.be 200
+        expect statusText
+            .to.be 'OK'
 
-  it 'should return a response from "/" route', ->
-    { data: message } = await axios.get "http://#{host}:#{port}"
-    expect message
-      .to.be 'Coffee Shop opening soon'
+    it 'should return a response from "/" route', ->
+        { data: message } = await axios.get "http://#{host}:#{port}"
+        expect message
+            .to.be 'Coffee Shop opening soon'
