@@ -4,7 +4,7 @@ axios = require 'axios'
 host = process.env.HOST or '127.0.0.1'
 port = process.env.PORT or 3000
 
-describe 'Perform and end to end test', ->
+describe 'Perform and integration test', ->
 
     it 'should return an empty array', ->
         # { status } = await axios.delete "http://#{host}:#{port}/drinks"
