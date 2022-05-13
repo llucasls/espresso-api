@@ -16,12 +16,13 @@ describe 'Perform an integration test', ->
             .to.eql []
 
     it 'should create and return a new entry in the drinks collection', ->
-        data =
-            _id: '123789456abc123789456abc'
+        request =
             drink: 'Black Coffee'
             price: 500
-        { data: response, status } = await axios.post "#{baseUrl}/drinks", data
-        expect status
-            .to.be 201
+        response = await axios.post "#{baseUrl}/drinks", request
         expect response
-            .to.be.equal data
+            .to.have.property 'status', 201
+        expect response.data
+            .to.have.property 'drink', 'Black Coffee'
+        expect response.data
+            .to.have.property 'price', 500
