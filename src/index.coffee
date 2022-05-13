@@ -3,6 +3,7 @@ import express from 'express'
 import bodyParser from 'body-parser'
 import yaml from 'yaml'
 import Model from './models/model.js'
+import * as service from './services/service.js'
 import errorHandler from './middlewares/errorHandler.js'
 import notFoundHandler from './middlewares/notFoundHandler.js'
 import parseData from './middlewares/parseData.js'
@@ -26,7 +27,7 @@ app.get '/', (req, res, next) ->
         .send 'Coffee Shop opening soon'
 
 create = (req, res, next) ->
-    drinks.create req.body
+    service.create req.body
         .then (drink) ->
             res
                 .status 201
