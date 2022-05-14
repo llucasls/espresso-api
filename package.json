@@ -41,7 +41,8 @@
     "exit": true,
     "require": [
       "coffeescript/register",
-      "dotenv/config"
+      "dotenv/config",
+      "./tasks/expect.mjs"
     ]
   },
   "repository": {

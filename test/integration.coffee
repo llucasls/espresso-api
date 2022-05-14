@@ -1,4 +1,3 @@
-expect = require 'expect.js'
 axios = require 'axios'
 
 host = process.env.HOST or '127.0.0.1'

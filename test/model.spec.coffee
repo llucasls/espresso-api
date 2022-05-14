@@ -1,5 +1,3 @@
-expect = require 'expect.js'
-
 describe 'Test drinks model', ->
 
     it 'should be a model', ->
