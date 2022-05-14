@@ -10,7 +10,7 @@
     "test": "scripts/test-mocha.sh",
     "lint": "coffeelint src/",
     "prestart": "yarn run compile",
-    "start": "node .",
+    "start": "node -r dotenv/config .",
     "precompile": "yarn run clean",
     "compile": "coffee -o build/ -c src/",
     "clean": "rm -rf build/*",

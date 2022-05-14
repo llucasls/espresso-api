@@ -9,4 +9,4 @@ fi
 
 rm -rf build/*
 coffee -o build/ -c src/
-node .
+node -r dotenv/config .

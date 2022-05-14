@@ -1,4 +1,3 @@
-import 'dotenv/config'
 import { MongoClient as client } from 'mongodb'
 
 MONGODB_URL = "mongodb://#{process.env.HOST or 'mongodb'}:27017"
