@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/zsh
 
 if [ -t 0 ]; then
     echo 'error: cannot execute script\n' > /dev/stderr

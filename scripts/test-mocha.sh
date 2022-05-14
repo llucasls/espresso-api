@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/zsh
 
 pid="$(pgrep $(basename $0))"
 pprocess="$(ps -o comm= -p $(ps -o ppid= -p $pid))"
