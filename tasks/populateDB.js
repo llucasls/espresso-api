@@ -1,4 +1,3 @@
-use Espresso;
 db.drinks.insertMany([
   {
     _id: ObjectId("627d22e5c4df74966b2fddd2"),
