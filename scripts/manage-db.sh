@@ -11,8 +11,8 @@ fi
 
 getopts :pr option
 case $option in
-    p) mongosh Espresso < tasks/populateDB.js ;;
-    r) mongosh Espresso < tasks/resetDB.js ;;
+    p) mongosh --norc Espresso < tasks/populateDB.js ;;
+    r) mongosh --norc Espresso < tasks/resetDB.js ;;
     *)
         echo 'error: no valid option was given\n' > /dev/stderr
         echo 'valid options: -r -p'
