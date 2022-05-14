@@ -9,4 +9,15 @@ if [ "$gpprocess" != "node" ]; then
     exit 10
 fi
 
-mongosh < tasks/resetDB.js
+getopts :pr option
+case $option in
+    p) mongosh < tasks/populateDB.js ;;
+    r) mongosh < tasks/resetDB.js ;;
+    *)
+        echo 'error: no valid option was given\n' > /dev/stderr
+        echo 'valid options: -r -p'
+        echo '\tr\treset database'
+        echo '\tp\tpopulate database'
+        exit 11
+    ;;
+esac

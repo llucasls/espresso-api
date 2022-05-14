@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "preinstall": "git config commit.template .gitcommit",
-    "pretest": "scripts/manage-db.sh",
+    "pretest": "scripts/manage-db.sh -r",
     "test": "scripts/test-mocha.sh",
     "lint": "coffeelint src/",
     "prestart": "yarn run compile",
