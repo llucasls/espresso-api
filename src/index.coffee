@@ -1,7 +1,7 @@
 import express from 'express'
 import bodyParser from 'body-parser'
 import yaml from 'yaml'
-import Model from './models/model.js'
+import Drink from './models/drink.js'
 import * as service from './services/service.js'
 import errorHandler from './middlewares/errorHandler.js'
 import notFoundHandler from './middlewares/notFoundHandler.js'
@@ -11,7 +11,7 @@ import format from './middlewares/format.js'
 
 app = express()
 port = process.env.PORT or 3000
-drinks = new Model 'drinks'
+drinks = new Drink
 
 app.use bodyParser.json()
 app.use bodyParser.urlencoded extended: yes
