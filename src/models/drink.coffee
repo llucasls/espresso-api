@@ -1,9 +1,8 @@
 import Model from './model.js'
-import db from './connection.js'
 
 class Drink extends Model
-    constructor: (@collection = 'drinks', @db = db) ->
-        super db
+    constructor: (@collection = 'drinks') ->
+        super()
 
 
 export default Drink
