@@ -18,7 +18,7 @@
     "reset:db": "scripts/manage-db.sh -r",
     "clean:db": "scripts/manage-db.sh -r",
     "populate:db": "scripts/manage-db.sh -p",
-    "coverage": "yarn run --silent clean:db && nyc mocha"
+    "coverage": "yarn run --silent clean:db && nyc mocha -R min"
   },
   "nodemonConfig": {
     "ignore": [
