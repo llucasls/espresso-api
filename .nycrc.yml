@@ -1,0 +1,12 @@
+all: true
+extension:
+  - .coffee
+reporter: text
+exclude:
+  - tasks/
+  - test/
+  - build/
+include:
+  - src/
+require:
+  - coffeescript/register
