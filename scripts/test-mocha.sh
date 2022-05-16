@@ -14,5 +14,5 @@ fi
 if [ -n "$1" ]; then
     mocha -g "$@"
 else
-    mocha 
+    mocha
 fi
