@@ -44,7 +44,7 @@
     "require": [
       "coffeescript/register",
       "dotenv/config",
-      "./tasks/expect.mjs"
+      "tasks/expect.coffee"
     ]
   },
   "repository": {
