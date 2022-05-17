@@ -81,11 +81,11 @@ update = (req, res, next) ->
         .catch(next)
 
 destroy = (req, res, next) ->
-    drinks.delete req.params.id
-        .then (drink) ->
+    service.destroy req.params.id
+        .then ->
             res
-                .status 200
-                .json drink
+                .status 204
+                .end()
         .catch(next)
 
 app.post('/drinks', create)

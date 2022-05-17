@@ -15,3 +15,8 @@ export create = (drink) ->
 export update = (id, drink) ->
     { value } = await drinks.update id, drink
     value
+
+export destroy = (id) ->
+    { acknowledged } = await drinks.delete id
+    throw new HttpError 500, 'Data deletion failed' if not acknowledged
+    null
