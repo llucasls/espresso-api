@@ -39,7 +39,9 @@ class Model
             .then (conn) ->
                 conn
                     .collection table
-                    .updateOne { _id: new ObjectId id }, $set: { document... }
+                    .findOneAndUpdate { _id: new ObjectId id },
+                        $set: document,
+                        { returnDocument: 'after' }
         result
 
     delete: (id) ->

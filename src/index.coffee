@@ -73,7 +73,7 @@ readOne = (req, res, next) ->
         .catch(next)
 
 update = (req, res, next) ->
-    drinks.update req.params.id, req.body
+    service.update req.params.id, req.body
         .then (drink) ->
             res
                 .status 200

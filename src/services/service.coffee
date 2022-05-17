@@ -11,3 +11,7 @@ export create = (drink) ->
     throw new HttpError 500, 'Data insertion failed' if not acknowledged
     result = await drinks.readOne insertedId
     result
+
+export update = (id, drink) ->
+    { value } = await drinks.update id, drink
+    value
