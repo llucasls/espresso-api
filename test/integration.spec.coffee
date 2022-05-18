@@ -25,3 +25,14 @@ describe 'Perform an integration test', ->
             .to.have.property 'drink', 'Black Coffee'
         expect response.data
             .to.have.property 'price', 500
+
+    it 'should get the inserted drink', ->
+        { data, status } = await axios.get "#{baseUrl}/drinks"
+        expect status
+            .to.be 200
+        expect data
+            .to.be.an Array
+        expect data[0]
+            .to.have.property 'drink', 'Black Coffee'
+        expect data[0]
+            .to.have.property 'price', 500
