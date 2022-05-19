@@ -4,7 +4,7 @@ import HttpError from '../utils/httpError.js'
 IdFormatError = 'Argument passed in must be a string of 24 hex characters'
 IdFormatRegex = /^[0-9a-f]{24}$/
 
-drinks = new Model 'drinks'
+drinks = new Drink
 
 export create = (drink) ->
     { acknowledged, insertedId } = await drinks.create drink
