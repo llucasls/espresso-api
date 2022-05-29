@@ -7,7 +7,7 @@ describe 'Test connection to server', ->
 
     it 'should return OK status', ->
         try
-            { status, statusText, data: message } =
+            { status, statusText } =
                 await axios.get "http://#{host}:#{port}"
             expect status
                 .to.be 200
