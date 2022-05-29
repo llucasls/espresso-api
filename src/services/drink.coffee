@@ -13,8 +13,12 @@ export create = (drink) ->
     result
 
 export read = (query) ->
+    result = await drinks.read query
+    result
 
 export readOne = (id) ->
+    result = await drinks.readOne id
+    result
 
 export update = (id, drink) ->
     { value } = await drinks.update id, drink
