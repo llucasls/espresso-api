@@ -1,6 +1,5 @@
 import express from 'express'
 import bodyParser from 'body-parser'
-import yaml from 'yaml'
 import DrinkController from './controllers/drink.js'
 import errorHandler from './middlewares/errorHandler.js'
 import notFoundHandler from './middlewares/notFoundHandler.js'
