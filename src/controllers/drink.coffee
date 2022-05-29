@@ -10,12 +10,30 @@ class DrinkController
             .catch(next)
 
     read: (req, res, next) ->
-        service.read req.query
-            .then (drinks) ->
-                res
-                    .status 200
-                    .json drinks
-            .catch(next)
+        switch req.format
+            when 'json'
+                service.read req.query, 'json'
+                    .then (drinks) ->
+                        res
+                            .status 200
+                            .type 'json'
+                            .send drinks
+                    .catch(next)
+            when 'yaml'
+                service.read req.query, 'yaml'
+                    .then (drinks) ->
+                        res
+                            .status 200
+                            .type 'yaml'
+                            .send drinks
+                    .catch(next)
+            else
+                service.read req.query
+                    .then (drinks) ->
+                        res
+                            .status 200
+                            .send drinks
+                    .catch(next)
 
     readOne: (req, res, next) ->
         service.readOne req.params.id

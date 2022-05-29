@@ -1,3 +1,4 @@
+import yaml from 'yaml'
 import Drink from '../models/drink.js'
 import HttpError from '../utils/httpError.js'
 
@@ -12,8 +13,16 @@ export create = (drink) ->
     result = await drinks.readOne insertedId
     result
 
-export read = (query) ->
-    result = await drinks.read query
+export read = (query, format) ->
+    switch format
+        when 'json'
+            data = await drinks.read query
+            result = JSON.stringify data
+        when 'yaml'
+            data = await drinks.read query
+            result = yaml.stringify data
+        else
+            result = await drinks.read query
     result
 
 export readOne = (id) ->
