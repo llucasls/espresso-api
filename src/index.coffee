@@ -57,7 +57,7 @@ create = (req, res, next) ->
 #                         .json drinks
 
 read = (req, res, next) ->
-    drinks.read req.query
+    service.read req.query
         .then (drinks) ->
             res
                 .status 200
@@ -65,7 +65,7 @@ read = (req, res, next) ->
         .catch(next)
 
 readOne = (req, res, next) ->
-    drinks.readOne req.params.id
+    service.readOne req.params.id
         .then (drink) ->
             res
                 .status 200
