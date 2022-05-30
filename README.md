@@ -6,7 +6,10 @@ This API has five endpoints that reference a drinks entity. Those endpoints are:
 
 <details>
   <summary>POST /drinks</summary>
-  <p>information on endpoint</p>
+  <p>
+    This endpoint reads the request body and creates a new entry in the database.
+    It accepts data formatted as JSON, YAML or URL encoded forms.
+  </p>
 </details>
 <details>
   <summary>GET /drinks</summary>
