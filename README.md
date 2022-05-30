@@ -6,6 +6,7 @@ This API has five endpoints that reference a drinks entity. Those endpoints are:
 
 - <details>
     <summary>POST /drinks</summary>
+    <p>information on endpoint</p>
   </details>
 - <details>
     <summary>GET /drinks</summary>
