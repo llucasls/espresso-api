@@ -1,6 +1,6 @@
 import { xml2js, js2xml } from 'xml-js'
 
-parseMany = (input) ->
+export parseMany = (input) ->
     output = []
     { elements: root } = xml2js input, compact: no
     { elements: children } = root[0]
@@ -17,7 +17,7 @@ parseMany = (input) ->
                 output[index][key] = value
     output
 
-stringifyMany = (input) ->
+export stringifyMany = (input) ->
     inputObj = elements: [
         type: 'element'
         name: 'drinks'
