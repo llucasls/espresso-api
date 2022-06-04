@@ -8,7 +8,6 @@ baseUrl = "http://#{host}:#{port}"
 describe 'Perform an integration test', ->
 
     it 'should return an empty array', ->
-        # { status } = await axios.delete "http://#{host}:#{port}/drinks"
         { data, status } = await axios.get "#{baseUrl}/drinks"
         expect status
             .to.be 200
