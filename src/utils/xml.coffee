@@ -18,10 +18,14 @@ parseMany = (input) ->
     output
 
 stringifyMany = (input) ->
-    inputObj = elements: [
-        type: 'element'
-        name: 'drinks'
-        elements: []
+    inputObj =
+        declaration:
+            version: '1.0'
+            encoding: 'utf-8'
+        elements: [
+            type: 'element'
+            name: 'drinks'
+            elements: []
     ]
     for index in input
         inputObj.elements[0].elements[index] =
