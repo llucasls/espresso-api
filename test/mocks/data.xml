@@ -1,0 +1,20 @@
+<drinks>
+  <drink>
+    <_id>627d22e5c4df74966b2fddd2</_id>
+    <name>Black Coffee</name>
+    <price>500</price>
+    <description>A cup of our traditional coffee</description>
+  </drink>
+  <drink>
+    <_id>627d233cc4df74966b2fddd3</_id>
+    <name>Orange Juice</name>
+    <price>500</price>
+    <description>A juice made from our homegrown oranges, directly from Florida</description>
+  </drink>
+  <drink>
+    <_id>627d236bc4df74966b2fddd4</_id>
+    <name>White Tea</name>
+    <price>600</price>
+    <description>A favorite among tea lovers</description>
+  </drink>
+</drinks>
