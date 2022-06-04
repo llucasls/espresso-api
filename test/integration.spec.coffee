@@ -23,7 +23,7 @@ describe 'Perform an integration test', ->
         expect response
             .to.have.property 'status', 201
         expect response.data
-            .to.have.property 'drink', 'Black Coffee'
+            .to.have.property 'name', 'Black Coffee'
         expect response.data
             .to.have.property 'price', 500
 
@@ -36,12 +36,12 @@ describe 'Perform an integration test', ->
         expect response
             .to.have.property 'status', 201
         expect response.data
-            .to.have.property 'drink', 'Orange Juice'
+            .to.have.property 'name', 'Orange Juice'
         expect response.data
             .to.have.property 'price', 500
 
     it 'should create a third entry by sending url encoded data', ->
-        request = 'drink=White%20Tea&price=700'
+        request = 'name=White%20Tea&price=700'
         requestConfig =
             headers: 'Content-Type': 'application/x-www-form-urlencoded'
         response = await axios
@@ -49,7 +49,7 @@ describe 'Perform an integration test', ->
         expect response
             .to.have.property 'status', 201
         expect response.data
-            .to.have.property 'drink', 'White Tea'
+            .to.have.property 'name', 'White Tea'
         expect response.data
             .to.have.property 'price', 700
 
@@ -60,14 +60,14 @@ describe 'Perform an integration test', ->
         expect data
             .to.be.an Array
         expect data[0]
-            .to.have.property 'drink', 'Black Coffee'
+            .to.have.property 'name', 'Black Coffee'
         expect data[0]
             .to.have.property 'price', 500
         expect data[1]
-            .to.have.property 'drink', 'Orange Juice'
+            .to.have.property 'name', 'Orange Juice'
         expect data[1]
             .to.have.property 'price', 500
         expect data[2]
-            .to.have.property 'drink', 'White Tea'
+            .to.have.property 'name', 'White Tea'
         expect data[2]
             .to.have.property 'price', 700
