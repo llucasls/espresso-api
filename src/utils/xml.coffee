@@ -41,8 +41,44 @@ stringifyMany = (input) ->
     output = js2xml inputObj, compact: no, spaces: 2
     output
 
+```
+const xmlStringify = (jsonData) => {
+  const input = {
+    declaration: {
+      attributes: {
+        version: '1.0',
+        encoding: 'utf-8'
+      }
+    },
+    elements: [{
+      type: 'element',
+      name: 'drinks',
+      elements: [],
+  }] }
+  for (const index in jsonData) {
+    input.elements[0].elements[index] = {
+      type: 'element',
+      name: 'drink',
+      elements: []
+    }
+    for (const entry of Object.entries(jsonData[index])) {
+      const [key, value] = entry
+      input.elements[0].elements[index].elements.push({
+        type: 'element',
+        name: key,
+        elements: [
+          { type: 'text', text: value }
+        ]
+      })
+    }
+  }
+  const output = js2xml(input, { compact: false, spaces: 2 })
+  return output
+};
+```
+
 export parse = parseMany
-export stringify = stringifyMany
+export stringify = xmlStringify
 
 XML =
     parse: parse
