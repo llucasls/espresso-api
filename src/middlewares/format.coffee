@@ -1,8 +1,8 @@
 format = (req, _res, next) ->
     if req.query.format?
-        { format: reqFormat, query... } = req.query
+        { format, query... } = req.query
         req.query = query
-        req.format = reqFormat
+        req.format = format
     next()
 
 export default format
