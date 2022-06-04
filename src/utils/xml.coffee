@@ -44,12 +44,6 @@ stringifyMany = (input) ->
 ```
 const xmlStringify = (jsonData) => {
   const input = {
-    declaration: {
-      attributes: {
-        version: '1.0',
-        encoding: 'utf-8'
-      }
-    },
     elements: [{
       type: 'element',
       name: 'drinks',
