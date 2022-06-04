@@ -1,4 +1,5 @@
 import YAML from 'yaml'
+import XML from '../utils/xml.js'
 import Drink from '../models/drink.js'
 import HttpError from '../utils/httpError.js'
 
@@ -21,6 +22,9 @@ export read = (query, format) ->
         when 'yaml'
             data = await drinks.read query
             result = YAML.stringify data
+        when 'xml'
+            data = await drinks.read query
+            result = XML.stringify data
         else
             result = await drinks.read query
     result
