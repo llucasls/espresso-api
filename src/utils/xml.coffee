@@ -39,3 +39,9 @@ stringifyMany = (input) ->
 
 export parse = parseMany
 export stringify = stringifyMany
+
+XML =
+    parse: parse
+    stringify: stringify
+
+export default XML
