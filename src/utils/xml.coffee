@@ -19,9 +19,6 @@ parseMany = (input) ->
 
 stringifyMany = (input) ->
     inputObj =
-        declaration:
-            version: '1.0'
-            encoding: 'utf-8'
         elements: [
             type: 'element'
             name: 'drinks'
