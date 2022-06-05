@@ -45,3 +45,15 @@ describe 'Test GET /drinks endpoint (read)', ->
                 .to.be 400
             expect data
                 .to.be.eql error: 'Format not recognized'
+
+    it 'should return a database document', ->
+        id = '627d233cc4df74966b2fddd3'
+        { data } = await axios.get "#{baseUrl}/drinks/#{id}?format=json"
+        document =
+            _id: "627d233cc4df74966b2fddd3"
+            name: 'Orange Juice'
+            price: 500
+            description: "
+            A juice made from our homegrown oranges, directly from Florida"
+        expect data
+            .to.be.eql document
