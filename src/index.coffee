@@ -30,7 +30,7 @@ app.get '/', (req, res, next) ->
 
 app.post('/drinks', controller.create)
 app.get('/drinks', format, controller.read)
-app.get('/drinks/:id', controller.readOne)
+app.get('/drinks/:id', format, controller.readOne)
 app.put('/drinks/:id', controller.update)
 app.delete('/drinks/:id', controller.delete)
 

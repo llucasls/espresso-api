@@ -19,11 +19,12 @@ class DrinkController
             .catch(next)
 
     readOne: (req, res, next) ->
-        service.readOne req.params.id
+        service.readOne req.params.id, req.format
             .then (drink) ->
                 res
                     .status 200
-                    .json drink
+                    .type req.format
+                    .send drink
             .catch(next)
 
     update: (req, res, next) ->

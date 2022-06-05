@@ -31,8 +31,20 @@ export read = (query, format) ->
             throw new HttpError 400, 'Format not recognized'
     result
 
-export readOne = (id) ->
-    result = await drinks.readOne id
+export readOne = (id, format) ->
+    console.log 'format', format
+    switch format
+        when 'json'
+            data = await drinks.readOne id
+            result = JSON.stringify data
+        when 'yaml'
+            data = await drinks.readOne id
+            result = YAML.stringify data
+        when 'xml'
+            data = await drinks.readOne id
+            result = XML.stringify data
+        else
+            throw new HttpError 400, 'Format not recognized'
     result
 
 export update = (id, drink) ->
