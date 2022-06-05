@@ -32,7 +32,6 @@ export read = (query, format) ->
     result
 
 export readOne = (id, format) ->
-    console.log 'format', format
     switch format
         when 'json'
             data = await drinks.readOne id
