@@ -38,6 +38,14 @@ stringifyMany = (input) ->
     output = js2xml inputObj, compact: no, spaces: 2
     output
 
+export bodyParse = (input) ->
+    [label] = Object.keys input
+    output = { input[label]... }
+    for key in Object.keys output
+        console.log 'key', key
+        output[key] = output[key][0]
+    output
+
 ```
 const xmlStringify = (jsonData) => {
   const input = {
