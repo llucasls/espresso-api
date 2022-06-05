@@ -71,7 +71,6 @@
   },
   "dependencies": {
     "body-parser": "^1.20.0",
-    "body-parser-xml": "^2.0.3",
     "dotenv": "^16.0.0",
     "express": "^4.17.3",
     "mongodb": "^4.5.0",
