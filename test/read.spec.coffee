@@ -69,3 +69,12 @@ describe 'Test GET /drinks endpoint (read)', ->
             description: 'A cup of our traditional coffee'
         expect data
             .to.be.equal document
+
+    it 'should return a XML formatted document', ->
+        XML = await import('../build/utils/xml.js')
+        id = '627d236bc4df74966b2fddd4'
+        { data } = await axios.get "#{baseUrl}/drinks/#{id}?format=xml"
+        xmlFile = resolve __dirname, 'mocks/whiteTea.xml'
+        document = await fs.readFile xmlFile, 'utf-8'
+        expect data
+            .to.be.equal document
