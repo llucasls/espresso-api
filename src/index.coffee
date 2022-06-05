@@ -1,6 +1,5 @@
 import express from 'express'
 import bodyParser from 'body-parser'
-import bodyParserXML from 'body-parser-xml'
 import DrinkController from './controllers/drink.js'
 import errorHandler from './middlewares/errorHandler.js'
 import notFoundHandler from './middlewares/notFoundHandler.js'
@@ -8,7 +7,6 @@ import parseData from './middlewares/parseData.js'
 import parseYaml from './middlewares/parseYaml.js'
 import parseXml from './middlewares/parseXml.js'
 import format from './middlewares/format.js'
-bodyParserXML bodyParser
 
 app = express()
 port = process.env.PORT or 3000
@@ -17,7 +15,7 @@ controller = new DrinkController
 app.use bodyParser.json()
 app.use bodyParser.urlencoded extended: yes
 app.use bodyParser.text type: 'text/yaml'
-app.use bodyParser.xml()
+app.use bodyParser.text type: 'application/xml'
 
 app.use parseData
 app.use parseYaml
