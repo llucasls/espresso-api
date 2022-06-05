@@ -47,6 +47,26 @@ export bodyParse = (input) ->
     output
 
 ```
+const xmlParse = (xmlData) => {
+  const output = []
+  const { elements: root } = xml2js(xmlData, { compact: false })
+  const { elements: children } = root[0]
+  children
+    .map(({ elements: document }) => document)
+    .forEach((data, index) => {
+      output[index] = {}
+      const document = { ...data
+        .map(({ name, elements }) => ({ [name]: elements[0].text }))
+      }
+      for (const attribute of Object.values(document)) {
+        const key = Object.keys(attribute)
+        const [value] = Object.values(attribute)
+        output[index][key] = value
+      }
+    })
+  return output
+};
+
 const xmlStringify = (jsonData) => {
   const input = {
     elements: [{
@@ -76,7 +96,7 @@ const xmlStringify = (jsonData) => {
 };
 ```
 
-export parse = parseMany
+export parse = xmlParse
 export stringify = xmlStringify
 
 XML =
