@@ -1,3 +1,4 @@
+import { ObjectId } from 'mongodb'
 import YAML from 'yaml'
 import XML from '../utils/xml.js'
 import Drink from '../models/drink.js'
@@ -9,6 +10,7 @@ IdFormatRegex = /^[0-9a-f]{24}$/
 drinks = new Drink
 
 export create = (drink) ->
+    drink._id = new ObjectId drink._id if drink._id?
     { acknowledged, insertedId } = await drinks.create drink
     throw new HttpError 500, 'Data insertion failed' if not acknowledged
     result = await drinks.readOne insertedId
