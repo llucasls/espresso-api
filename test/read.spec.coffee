@@ -35,9 +35,13 @@ describe 'Test GET /drinks endpoint (read)', ->
             .to.be.equal xmlData
 
     it 'should return an error', ->
-        { data, status } = await axios.get "#{baseUrl}/drinks?format=zml"
-        error = error: 'Format not recognized'
-        expect status
-            .to.be 400
-        expect data
-            .to.be.equal error
+        try
+            { data, status } = await axios.get "#{baseUrl}/drinks?format=zml"
+            response = { data, status }
+            throw { response }
+        catch error
+            { status, data } = error.response
+            expect status
+                .to.be 400
+            expect data
+                .to.be.eql error: 'Format not recognized'
