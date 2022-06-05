@@ -2,6 +2,7 @@
 { execSync: exec } = require 'child_process'
 fs = require 'fs/promises'
 axios = require 'axios'
+YAML = require 'yaml'
 
 host = process.env.HOST or '127.0.0.1'
 port = process.env.PORT or 3000
@@ -57,3 +58,15 @@ describe 'Test GET /drinks endpoint (read)', ->
             A juice made from our homegrown oranges, directly from Florida"
         expect data
             .to.be.eql document
+
+
+    it 'should return a YAML formatted document', ->
+        id = '627d22e5c4df74966b2fddd2'
+        { data } = await axios.get "#{baseUrl}/drinks/#{id}?format=yaml"
+        document = YAML.stringify
+            _id: '627d22e5c4df74966b2fddd2',
+            name: 'Black Coffee',
+            price: 500,
+            description: 'A cup of our traditional coffee'
+        expect data
+            .to.be.equal document
