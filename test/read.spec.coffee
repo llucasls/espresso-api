@@ -59,7 +59,6 @@ describe 'Test GET /drinks endpoint (read)', ->
         expect data
             .to.be.eql document
 
-
     it 'should return a YAML formatted document', ->
         id = '627d22e5c4df74966b2fddd2'
         { data } = await axios.get "#{baseUrl}/drinks/#{id}?format=yaml"
