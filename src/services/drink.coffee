@@ -28,7 +28,7 @@ export read = (query, format) ->
             data = await drinks.read query
             result = XML.stringify data
         else
-            result = await drinks.read query
+            throw new HttpError 400, 'Format not recognized'
     result
 
 export readOne = (id) ->
