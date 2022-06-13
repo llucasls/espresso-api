@@ -53,6 +53,19 @@ describe 'Perform an integration test', ->
         expect response.data
             .to.have.property 'price', 700
 
+    it 'should create a fourth entry by sending XML formatted data', ->
+        request = fs.readFileSync 'test/mocks/whiteTea.xml', 'utf-8'
+        requestConfig =
+            headers: 'Content-Type': 'application/xml'
+        response = await axios
+            .post "#{baseUrl}/drinks", request, requestConfig
+        expect response
+            .to.have.property 'status', 201
+        expect response.data
+            .to.have.property 'name', 'White Tea'
+        expect response.data
+            .to.have.property 'price', 600
+
     it 'should get the inserted drinks', ->
         { data, status } = await axios.get "#{baseUrl}/drinks"
         expect status
@@ -71,3 +84,7 @@ describe 'Perform an integration test', ->
             .to.have.property 'name', 'Green Tea'
         expect data[2]
             .to.have.property 'price', 700
+        expect data[3]
+            .to.have.property 'name', 'White Tea'
+        expect data[3]
+            .to.have.property 'price', 600
