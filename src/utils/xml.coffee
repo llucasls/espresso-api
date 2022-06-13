@@ -1,4 +1,5 @@
 import { xml2js, js2xml } from 'xml-js'
+import { parseValue } from 'query-types'
 
 parseMany = (input) ->
     output = []
@@ -17,32 +18,13 @@ parseMany = (input) ->
                 output[index][key] = value
     output
 
-stringifyMany = (input) ->
-    inputObj =
-        elements: [
-            type: 'element'
-            name: 'drinks'
-            elements: []
-    ]
-    for index in input
-        inputObj.elements[0].elements[index] =
-            type: 'element'
-            name: 'drink'
-            elements: []
-    for entry of Object.entries input[index]
-        [key, value] = entry
-        inputObj.elements[0].elements[index].elements.push
-            type: 'element'
-            name: key
-            elements: [{ type: 'text', text: value }]
-    output = js2xml inputObj, compact: no, spaces: 2
-    output
-
 export bodyParse = (input) ->
-    [label] = Object.keys input
-    output = { input[label]... }
-    for key in Object.keys output
-        output[key] = output[key][0]
+    parsedObj = xml2js input, compact: yes
+    [label] = Object.keys parsedObj
+    output = parsedObj[label]
+    for attribute in Object.keys output
+        output[attribute] = output[attribute]['_text']
+    output = parseValue output
     output
 
 ```
@@ -95,11 +77,29 @@ const xmlStringify = (jsonData) => {
 };
 ```
 
+export stringifyMany = (input, root = 'collection') ->
+    output = js2xml { [root]: input }, compact: no, spaces: 2
+    output
+
+export stringifyOne = (input, root = 'document') ->
+    output = js2xml { [root]: input }, compact: yes, spaces: 2
+    output
+
+export stringifySelect = (input) ->
+    if input instanceof Array
+        output = stringifyMany input
+    else
+        output = stringifyOne input
+    output
+
 export parse = xmlParse
 export stringify = xmlStringify
 
 XML =
     parse: parse
     stringify: stringify
+    stringifyMany: stringifyMany
+    stringifyOne: stringifyOne
+    stringifySelect: stringifySelect
 
 export default XML
