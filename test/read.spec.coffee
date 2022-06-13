@@ -12,7 +12,7 @@ populate = resolve 'tasks/populateDB.js'
 performTask = (task) -> exec "mongosh Espresso < #{task}"
 
 describe 'Test GET /drinks endpoint (read)', ->
-    performTask populate
+    # performTask populate
 
     it 'should return a JSON formatted list', ->
         { data } = await axios.get "#{baseUrl}/drinks?format=json"
