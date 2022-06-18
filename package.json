@@ -6,9 +6,8 @@
   "type": "module",
   "scripts": {
     "preinstall": "git config commit.template .gitcommit",
-    "pretest": "scripts/manage-db.sh -r && yarn --silent run compile",
+    "pretest": "yarn --silent run compile",
     "test": "scripts/test-mocha.sh",
-    "posttest": "scripts/manage-db.sh -r",
     "lint": "coffeelint src/",
     "prestart": "yarn run compile",
     "start": "node -r dotenv/config .",
