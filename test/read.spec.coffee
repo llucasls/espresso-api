@@ -13,7 +13,9 @@ reset = resolve 'tasks/resetDB.js'
 performTask = (task) -> exec "mongosh Espresso --quiet --norc < #{task}"
 
 describe 'Test GET /drinks endpoint (read)', ->
-    # performTask populate
+    before await -> performTask populate
+
+    after await -> performTask reset
 
     it 'should return a JSON formatted list', ->
         { data } = await axios.get "#{baseUrl}/drinks?format=json"
