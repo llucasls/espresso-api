@@ -1,6 +1,7 @@
 fs = require 'fs/promises'
 axios = require 'axios'
 YAML = require 'yaml'
+{ resolve } = require 'path'
 { performTask, populate, reset } = require '../tasks/performTask.coffee'
 
 host = process.env.HOST or '127.0.0.1'
