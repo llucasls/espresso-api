@@ -1,4 +1,4 @@
-fs = require 'fs'
+fs = require 'fs/promises'
 axios = require 'axios'
 { performTask, reset } = require '../tasks/performTask.coffee'
 
@@ -20,7 +20,7 @@ describe 'integration', ->
                 .to.eql []
 
         it 'should create and return a new entry in the drinks collection', ->
-            request = fs.readFileSync 'test/mocks/blackCoffee.json', 'utf-8'
+            request = await fs.readFile 'test/mocks/blackCoffee.json', 'utf-8'
             requestConfig =
                 headers: 'Content-Type': 'application/json'
             response = await axios
@@ -33,7 +33,7 @@ describe 'integration', ->
                 .to.have.property 'price', 500
 
         it 'should create another entry by sending YAML formatted data', ->
-            request = fs.readFileSync 'test/mocks/orangeJuice.yml', 'utf-8'
+            request = await fs.readFile 'test/mocks/orangeJuice.yml', 'utf-8'
             requestConfig =
                 headers: 'Content-Type': 'text/yaml'
             response = await axios
@@ -59,7 +59,7 @@ describe 'integration', ->
                 .to.have.property 'price', 700
 
         it.skip 'should create a fourth entry by sending XML formatted data', ->
-            request = fs.readFileSync 'test/mocks/whiteTea.xml', 'utf-8'
+            request = await fs.readFile 'test/mocks/whiteTea.xml', 'utf-8'
             requestConfig =
                 headers: 'Content-Type': 'application/xml'
             response = await axios
