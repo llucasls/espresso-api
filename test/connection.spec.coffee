@@ -15,4 +15,5 @@ describe 'Test connection to server', ->
                 .to.be 'OK'
         catch error
             delete error.stack
+            error.message = 'Error: cannot connect with server'
             throw error
