@@ -10,7 +10,9 @@ baseUrl = "http://#{host}:#{port}"
 
 describe 'read', ->
 
-    before await -> performTask populate
+    before await ->
+        performTask reset
+        performTask populate
 
     after await -> performTask reset
 
