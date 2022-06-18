@@ -9,6 +9,8 @@ baseUrl = "http://#{host}:#{port}"
 describe 'integration', ->
     before await -> performTask reset
 
+    after await -> performTask reset
+
     describe 'Perform an integration test', ->
         it 'should return an empty array', ->
             { data, status } = await axios.get "#{baseUrl}/drinks"
