@@ -16,7 +16,6 @@
     "clean": "rm -rf build/*",
     "dev": "nodemon",
     "reset:db": "scripts/manage-db.sh -r",
-    "clean:db": "scripts/manage-db.sh -r",
     "populate:db": "scripts/manage-db.sh -p",
     "coverage": "nyc mocha -R tasks/reporter.coffee"
   },
