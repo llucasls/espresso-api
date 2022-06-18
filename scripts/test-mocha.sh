@@ -9,8 +9,13 @@ if test "$pprocess" != "node" -a "$gpprocess" != "node"; then
     exit 10
 fi
 
-if [ -n "$1" ]; then
-    mocha -g "$@"
+if test -n "$1" -a -z "$2"; then
+    test_file="$1"
+    mocha "test/${test_file}.spec.coffee"
+elif test -n "$2"; then
+    test_files="$(echo "$@" | tr \  ',')"
+    mocha "test/{${test_files}}.spec.coffee"
 else
-    mocha
+    mocha "test/connection.spec.coffee" &&
+    mocha --ignore "test/connection.spec.coffee"
 fi
