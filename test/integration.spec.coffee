@@ -89,7 +89,7 @@ describe 'integration', ->
                 .to.have.property 'name', 'Green Tea'
             expect data[2]
                 .to.have.property 'price', 700
-            expect data[3]
-                .to.have.property 'name', 'White Tea'
-            expect data[3]
-                .to.have.property 'price', 600
+            # expect data[3]
+            #     .to.have.property 'name', 'White Tea'
+            # expect data[3]
+            #     .to.have.property 'price', 600
