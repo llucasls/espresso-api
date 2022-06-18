@@ -15,8 +15,8 @@
     "compile": "coffee -o build/ -c src/",
     "clean": "rm -rf build/*",
     "dev": "nodemon",
-    "reset:db": "scripts/manage-db.sh -r",
-    "populate:db": "scripts/manage-db.sh -p",
+    "reset": "scripts/manage-db.sh -r",
+    "populate": "scripts/manage-db.sh -p",
     "coverage": "nyc mocha -R tasks/reporter.coffee"
   },
   "nodemonConfig": {
