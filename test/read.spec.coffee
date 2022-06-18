@@ -9,8 +9,8 @@ port = process.env.PORT or 3000
 baseUrl = "http://#{host}:#{port}"
 
 populate = resolve 'tasks/populateDB.js'
-performTask = (task) -> exec "mongosh Espresso < #{task}"
 reset = resolve 'tasks/resetDB.js'
+performTask = (task) -> exec "mongosh Espresso --quiet --norc < #{task}"
 
 describe 'Test GET /drinks endpoint (read)', ->
     # performTask populate
