@@ -1,16 +1,11 @@
-{ resolve } = require 'path'
-{ execSync: exec } = require 'child_process'
 fs = require 'fs/promises'
 axios = require 'axios'
 YAML = require 'yaml'
+{ performTask, populate, reset } = require '../tasks/performTask.coffee'
 
 host = process.env.HOST or '127.0.0.1'
 port = process.env.PORT or 3000
 baseUrl = "http://#{host}:#{port}"
-
-populate = resolve 'tasks/populateDB.js'
-reset = resolve 'tasks/resetDB.js'
-performTask = (task) -> exec "mongosh Espresso --quiet --norc < #{task}"
 
 describe 'read', ->
 
@@ -42,7 +37,8 @@ describe 'read', ->
 
         it 'should return an error', ->
             try
-                { data, status } = await axios.get "#{baseUrl}/drinks?format=zml"
+                { data, status } = await axios
+                    .get "#{baseUrl}/drinks?format=zml"
                 response = { data, status }
                 throw { response }
             catch error
