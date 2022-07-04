@@ -77,13 +77,142 @@ const xmlStringify = (jsonData) => {
 };
 ```
 
-export stringifyMany = (input, root = 'collection') ->
-    output = js2xml { [root]: input }, compact: no, spaces: 2
+
+expandCollection = ->
+    collection =
+        elements: [
+            type: 'element'
+            name: 'drinks'
+            elements: [
+                {
+                    type: 'element'
+                    name: 'drink'
+                    elements: [
+                        {
+                            type: 'element'
+                            name: '_id'
+                            elements: [
+                                type: 'text'
+                                text: '627d22e5c4df74966b2fddd2'
+                            ]
+                        },
+                        {
+                            type: 'element'
+                            name: 'name'
+                            elements: [
+                                type: 'text'
+                                text: 'Black Coffee'
+                            ]
+                        },
+                        {
+                            type: 'element'
+                            name: 'price'
+                            elements: [
+                                type: 'text'
+                                text: 500
+                            ]
+                        },
+                        {
+                            type: 'element'
+                            name: 'description'
+                            elements: [
+                                type: 'text'
+                                text: 'A cup of our traditional coffee'
+                            ]
+                        },
+                    ]
+                },
+                {
+                    type: 'element'
+                    name: 'drink'
+                    elements: [
+                        {
+                            type: 'element'
+                            name: '_id'
+                            elements: [
+                                type: 'text'
+                                text: '627d233cc4df74966b2fddd3'
+                            ]
+                        },
+                        {
+                            type: 'element'
+                            name: 'name'
+                            elements: [
+                                type: 'text'
+                                text: 'Orange Juice'
+                            ]
+                        },
+                        {
+                            type: 'element'
+                            name: 'price'
+                            elements: [
+                                type: 'text'
+                                text: 500
+                            ]
+                        },
+                        {
+                            type: 'element'
+                            name: 'description'
+                            elements: [
+                                type: 'text'
+                                text: 'A juice made from our homegrown oranges, directly from Florida'
+                            ]
+                        },
+                    ]
+                },
+                {
+                    type: 'element'
+                    name: 'drink'
+                    elements: [
+                        {
+                            type: 'element'
+                            name: '_id'
+                            elements: [
+                                type: 'text'
+                                text: '627d236bc4df74966b2fddd4'
+                            ]
+                        },
+                        {
+                            type: 'element'
+                            name: 'name'
+                            elements: [
+                                type: 'text'
+                                text: 'White Tea'
+                            ]
+                        },
+                        {
+                            type: 'element'
+                            name: 'price'
+                            elements: [
+                                type: 'text'
+                                text: 600
+                            ]
+                        },
+                        {
+                            type: 'element'
+                            name: 'description'
+                            elements: [
+                                type: 'text'
+                                text: 'A favorite among tea lovers'
+                            ]
+                        },
+                    ]
+                }
+            ]
+        ]
+    collection
+
+
+export stringifyMany = (input, root = 'collection', element = 'document') ->
+    newCollection = expandCollection()
+    output = js2xml newCollection, compact: no, spaces: 2
     output
+
 
 export stringifyOne = (input, root = 'document') ->
     output = js2xml { [root]: input }, compact: yes, spaces: 2
     output
+
 
 export stringifySelect = (input) ->
     if input instanceof Array
@@ -92,8 +221,10 @@ export stringifySelect = (input) ->
         output = stringifyOne input
     output
 
+
 export parse = xmlParse
 export stringify = xmlStringify
+
 
 XML =
     parse: parse
@@ -101,5 +232,6 @@ XML =
     stringifyMany: stringifyMany
     stringifyOne: stringifyOne
     stringifySelect: stringifySelect
+
 
 export default XML
