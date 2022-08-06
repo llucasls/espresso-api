@@ -81,3 +81,26 @@ describe '(xml) Test the XML methods', ->
         """
         expect output
             .to.be.eql expected
+
+    it 'test stringifyMany with another collection', ->
+        { default: XML } = await import('../build/utils/xml.js')
+        { readFile } = await import('fs/promises')
+        data = []
+        data[0] =
+            _id: "627d22e5c4df74966b2fddd2"
+            name: "Green Tea"
+            price: 700
+            description: "A widely consumed flavor of tea"
+        output = XML.stringifyMany data, 'drinks'
+        expected = """
+<drinks>
+  <drink>
+    <_id>627d22e5c4df74966b2fddd2</_id>
+    <name>Green Tea</name>
+    <price>700</price>
+    <description>A widely consumed flavor of tea</description>
+  </drink>
+</drinks>
+        """
+        expect output
+            .to.be.eql expected
