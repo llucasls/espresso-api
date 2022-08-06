@@ -78,129 +78,36 @@ const xmlStringify = (jsonData) => {
 ```
 
 
-expandCollection = ->
-    collection =
+expandCollection = (input) ->
+    output =
         elements: [
             type: 'element'
             name: 'drinks'
-            elements: [
-                {
-                    type: 'element'
-                    name: 'drink'
-                    elements: [
-                        {
-                            type: 'element'
-                            name: '_id'
-                            elements: [
-                                type: 'text'
-                                text: '627d22e5c4df74966b2fddd2'
-                            ]
-                        },
-                        {
-                            type: 'element'
-                            name: 'name'
-                            elements: [
-                                type: 'text'
-                                text: 'Black Coffee'
-                            ]
-                        },
-                        {
-                            type: 'element'
-                            name: 'price'
-                            elements: [
-                                type: 'text'
-                                text: 500
-                            ]
-                        },
-                        {
-                            type: 'element'
-                            name: 'description'
-                            elements: [
-                                type: 'text'
-                                text: 'A cup of our traditional coffee'
-                            ]
-                        },
-                    ]
-                },
-                {
-                    type: 'element'
-                    name: 'drink'
-                    elements: [
-                        {
-                            type: 'element'
-                            name: '_id'
-                            elements: [
-                                type: 'text'
-                                text: '627d233cc4df74966b2fddd3'
-                            ]
-                        },
-                        {
-                            type: 'element'
-                            name: 'name'
-                            elements: [
-                                type: 'text'
-                                text: 'Orange Juice'
-                            ]
-                        },
-                        {
-                            type: 'element'
-                            name: 'price'
-                            elements: [
-                                type: 'text'
-                                text: 500
-                            ]
-                        },
-                        {
-                            type: 'element'
-                            name: 'description'
-                            elements: [
-                                type: 'text'
-                                text: 'A juice made from our homegrown oranges, directly from Florida'
-                            ]
-                        },
-                    ]
-                },
-                {
-                    type: 'element'
-                    name: 'drink'
-                    elements: [
-                        {
-                            type: 'element'
-                            name: '_id'
-                            elements: [
-                                type: 'text'
-                                text: '627d236bc4df74966b2fddd4'
-                            ]
-                        },
-                        {
-                            type: 'element'
-                            name: 'name'
-                            elements: [
-                                type: 'text'
-                                text: 'White Tea'
-                            ]
-                        },
-                        {
-                            type: 'element'
-                            name: 'price'
-                            elements: [
-                                type: 'text'
-                                text: 600
-                            ]
-                        },
-                        {
-                            type: 'element'
-                            name: 'description'
-                            elements: [
-                                type: 'text'
-                                text: 'A favorite among tea lovers'
-                            ]
-                        },
-                    ]
-                }
-            ]
-        ]
-    collection
+            elements: []]
+
+    elements = output['elements'][0]['elements']
+
+    for index in [0...input.length]
+        document =
+            type: 'element'
+            name: 'drink'
+            elements: []
+
+        for entry in Object.entries input[index]
+            [key, value] = entry
+            attribute =
+                type: 'element'
+                name: key
+                elements: [{
+                    type: 'text'
+                    text: value
+                }]
+
+            document['elements'].push attribute
+
+        elements.push document
+
+    output
 
 
 export stringifyMany = (input, root = 'collection', element = 'document') ->
