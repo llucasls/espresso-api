@@ -204,7 +204,7 @@ expandCollection = ->
 
 
 export stringifyMany = (input, root = 'collection', element = 'document') ->
-    newCollection = expandCollection()
+    newCollection = expandCollection input
     output = js2xml newCollection, compact: no, spaces: 2
     output
 
