@@ -6,7 +6,7 @@ describe '(xml) Test the XML methods', ->
         input = require "#{__dirname}/mocks/data.json"
         output = await readFile "#{__dirname}/mocks/data.xml", 'utf-8'
         expect output
-            .to.be.equal XML.stringify input
+            .to.be.equal XML.stringify input, 'drinks', 'drink'
 
     it 'should parse a XML object into a JavaScript object', ->
         { default: XML } = await import('../build/utils/xml.js')
@@ -56,7 +56,7 @@ describe '(xml) Test the XML methods', ->
             name: "White Tea"
             price: 600
             description: "A favorite among tea lovers"
-        output = XML.stringifyMany data, 'drinks'
+        output = XML.stringify data, 'drinks', 'drink'
         expected = """
 <drinks>
   <drink>
@@ -91,7 +91,7 @@ describe '(xml) Test the XML methods', ->
             name: "Green Tea"
             price: 700
             description: "A widely consumed flavor of tea"
-        output = XML.stringifyMany data, 'drinks'
+        output = XML.stringify data, 'drinks', 'drink'
         expected = """
 <drinks>
   <drink>
