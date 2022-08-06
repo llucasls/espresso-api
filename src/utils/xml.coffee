@@ -1,88 +1,12 @@
 import { xml2js, js2xml } from 'xml-js'
 import { parseValue } from 'query-types'
 
-parseMany = (input) ->
-    output = []
-    { elements: root } = xml2js input, compact: no
-    { elements: children } = root[0]
-    children
-        .map ({ elements: document }) -> document
-        .forEach (data, index) ->
-            output[index] = {}
-            document = { ...data
-                .map ({ name, elements }) -> ({ [name]: elements[0].text })
-            }
-            for attribute of Object.values document
-                key = Object.keys attribute
-                [value] = Object.values attribute
-                output[index][key] = value
-    output
 
-export bodyParse = (input) ->
-    parsedObj = xml2js input, compact: yes
-    [label] = Object.keys parsedObj
-    output = parsedObj[label]
-    for attribute in Object.keys output
-        output[attribute] = output[attribute]['_text']
-    output = parseValue output
-    output
-
-```
-const xmlParse = (xmlData) => {
-  const output = []
-  const { elements: root } = xml2js(xmlData, { compact: false })
-  const { elements: children } = root[0]
-  children
-    .map(({ elements: document }) => document)
-    .forEach((data, index) => {
-      output[index] = {}
-      const document = { ...data
-        .map(({ name, elements }) => ({ [name]: elements[0].text }))
-      }
-      for (const attribute of Object.values(document)) {
-        const key = Object.keys(attribute)
-        const [value] = Object.values(attribute)
-        output[index][key] = value
-      }
-    })
-  return output
-};
-
-const xmlStringify = (jsonData) => {
-  const input = {
-    elements: [{
-      type: 'element',
-      name: 'drinks',
-      elements: [],
-  }] }
-  for (const index in jsonData) {
-    input.elements[0].elements[index] = {
-      type: 'element',
-      name: 'drink',
-      elements: []
-    }
-    for (const entry of Object.entries(jsonData[index])) {
-      const [key, value] = entry
-      input.elements[0].elements[index].elements.push({
-        type: 'element',
-        name: key,
-        elements: [
-          { type: 'text', text: value }
-        ]
-      })
-    }
-  }
-  const output = js2xml(input, { compact: false, spaces: 2 })
-  return output
-};
-```
-
-
-expandCollection = (input) ->
+expandCollection = (input, root, child) ->
     output =
         elements: [
             type: 'element'
-            name: 'drinks'
+            name: root
             elements: []]
 
     elements = output['elements'][0]['elements']
@@ -90,7 +14,7 @@ expandCollection = (input) ->
     for index in [0...input.length]
         document =
             type: 'element'
-            name: 'drink'
+            name: child
             elements: []
 
         for entry in Object.entries input[index]
@@ -110,8 +34,8 @@ expandCollection = (input) ->
     output
 
 
-export stringifyMany = (input, root = 'collection', element = 'document') ->
-    newCollection = expandCollection input
+export stringifyMany = (input, root = 'collection', child = 'document') ->
+    newCollection = expandCollection input, root, child
     output = js2xml newCollection, compact: no, spaces: 2
     output
 
@@ -121,24 +45,36 @@ export stringifyOne = (input, root = 'document') ->
     output
 
 
-export stringifySelect = (input) ->
+export stringify = (input, root, element) ->
     if input instanceof Array
-        output = stringifyMany input
+        output = stringifyMany input, root, element
     else
-        output = stringifyOne input
+        output = stringifyOne input, root
     output
 
 
-export parse = xmlParse
-export stringify = xmlStringify
+parse = (input) ->
+    output = []
+    { elements: root } = xml2js input, compact: no
+    { elements: children } = root[0]
+    children
+        .map ({ elements: document }) -> document
+        .forEach (data, index) ->
+            output[index] = {}
+            document = { ...data
+                .map ({ name, elements }) -> ({ [name]: elements[0].text })
+            }
+            for attribute in Object.values document
+                key = Object.keys attribute
+                [value] = Object.values attribute
+                output[index][key] = value
+
+    output
 
 
 XML =
     parse: parse
     stringify: stringify
-    stringifyMany: stringifyMany
-    stringifyOne: stringifyOne
-    stringifySelect: stringifySelect
 
 
 export default XML
