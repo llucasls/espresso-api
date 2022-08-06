@@ -24,7 +24,7 @@ describe '(xml) Test the XML methods', ->
             name: "White Tea"
             price: 600
             description: "A favorite among tea lovers"
-        output = XML.stringifyOne data, 'drink'
+        output = XML.stringify data, 'drink'
         expected = """
 <drink>
   <_id>627d236bc4df74966b2fddd4</_id>
