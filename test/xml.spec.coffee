@@ -79,6 +79,5 @@ describe '(xml) Test the XML methods', ->
   </drink>
 </drinks>
         """
-        console.log data
         expect output
             .to.be.eql expected
