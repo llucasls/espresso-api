@@ -9,13 +9,8 @@ if test "$pprocess" != "node" -a "$gpprocess" != "node"; then
     exit 10
 fi
 
-if test -n "$1" -a -z "$2"; then
-    test_file="$1"
-    mocha "test/${test_file}.spec.coffee"
-elif test -n "$2"; then
-    test_files="$(echo "$@" | tr \  ',')"
-    mocha "test/{${test_files}}.spec.coffee"
-else
-    mocha "test/connection.spec.coffee" &&
-    mocha --ignore "test/connection.spec.coffee"
-fi
+test_names="$(echo "${@}" | tr ' ' '|')"
+test_files="$(find test -mindepth 2 -regextype awk \
+    -iregex ".*(${test_names})\.spec.coffee")"
+
+mocha ${test_files}
