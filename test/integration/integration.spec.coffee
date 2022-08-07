@@ -1,6 +1,6 @@
 fs = require 'fs/promises'
 axios = require 'axios'
-{ performTask, reset } = require '../tasks/performTask.coffee'
+{ performTask, reset } = require '../../tasks/performTask.coffee'
 
 host = process.env.HOST or '127.0.0.1'
 port = process.env.PORT or 3000
@@ -58,7 +58,7 @@ describe 'integration', ->
             expect response.data
                 .to.have.property 'price', 700
 
-        it.skip 'should create a fourth entry by sending XML formatted data', ->
+        it 'should create a fourth entry by sending XML formatted data', ->
             request = await fs.readFile 'test/mocks/whiteTea.xml', 'utf-8'
             requestConfig =
                 headers: 'Content-Type': 'application/xml'
