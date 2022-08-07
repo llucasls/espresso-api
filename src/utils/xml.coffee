@@ -54,20 +54,28 @@ export stringify = (input, root, element) ->
 
 
 export parse = (input) ->
-    output = []
-    { elements: root } = xml2js input, compact: no
-    { elements: children } = root[0]
-    children
-        .map ({ elements: document }) -> document
-        .forEach (data, index) ->
-            output[index] = {}
-            document = { ...data
-                .map ({ name, elements }) -> ({ [name]: elements[0].text })
-            }
-            for attribute in Object.values document
-                key = Object.keys attribute
-                [value] = Object.values attribute
-                output[index][key] = value
+    try
+        output = []
+        { elements: root } = xml2js input, compact: no
+        { elements: children } = root[0]
+        children
+            .map ({ elements: document }) -> document
+            .forEach (data, index) ->
+                output[index] = {}
+                document = { ...data
+                    .map ({ name, elements }) -> ({ [name]: elements[0].text })
+                }
+                for attribute in Object.values document
+                    key = Object.keys attribute
+                    [value] = Object.values attribute
+                    output[index][key] = value
+    catch
+        parsedDoc = xml2js input, compact: yes
+        [root] = Object.keys parsedDoc
+        output = parsedDoc[root]
+        for key in Object.keys output
+            output[key] = output[key]['_text']
+        output = parseValue output
 
     output
 
