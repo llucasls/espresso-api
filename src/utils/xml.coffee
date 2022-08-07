@@ -37,11 +37,13 @@ expandCollection = (input, root, child) ->
 stringifyMany = (input, root = 'collection', child = 'document') ->
     newCollection = expandCollection input, root, child
     output = js2xml newCollection, compact: no, spaces: 2
+    output += "\n"
     output
 
 
 stringifyOne = (input, root = 'document') ->
     output = js2xml { [root]: input }, compact: yes, spaces: 2
+    output += "\n"
     output
 
 
