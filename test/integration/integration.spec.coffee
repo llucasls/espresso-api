@@ -7,9 +7,9 @@ port = process.env.PORT or 3000
 baseUrl = "http://#{host}:#{port}"
 
 describe 'integration', ->
-    before await -> performTask reset
+    before -> await performTask reset
 
-    after await -> performTask reset
+    after -> await performTask reset
 
     describe 'Perform an integration test', ->
         it 'should return an empty array', ->

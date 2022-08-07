@@ -10,11 +10,11 @@ baseUrl = "http://#{host}:#{port}"
 
 describe 'read', ->
 
-    before await ->
-        performTask reset
-        performTask populate
+    before ->
+        await performTask reset
+        await performTask populate
 
-    after await -> performTask reset
+    after -> await performTask reset
 
     describe 'Test GET /drinks endpoint (read)', ->
         it 'should return a JSON formatted list', ->
