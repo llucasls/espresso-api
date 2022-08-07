@@ -34,13 +34,13 @@ expandCollection = (input, root, child) ->
     output
 
 
-export stringifyMany = (input, root = 'collection', child = 'document') ->
+stringifyMany = (input, root = 'collection', child = 'document') ->
     newCollection = expandCollection input, root, child
     output = js2xml newCollection, compact: no, spaces: 2
     output
 
 
-export stringifyOne = (input, root = 'document') ->
+stringifyOne = (input, root = 'document') ->
     output = js2xml { [root]: input }, compact: yes, spaces: 2
     output
 
@@ -53,7 +53,7 @@ export stringify = (input, root, element) ->
     output
 
 
-parse = (input) ->
+export parse = (input) ->
     output = []
     { elements: root } = xml2js input, compact: no
     { elements: children } = root[0]
