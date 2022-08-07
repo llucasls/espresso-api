@@ -41,6 +41,7 @@ export readOne = (id, format) ->
             result = YAML.stringify data
         when 'xml'
             data = await drinks.readOne id
+            data['_id'] = String data['_id']
             result = XML.stringify data
         else
             throw new HTTPError 400, 'Format not recognized'
