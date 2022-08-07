@@ -2,7 +2,7 @@ fs = require 'fs/promises'
 axios = require 'axios'
 YAML = require 'yaml'
 { resolve } = require 'path'
-{ performTask, populate, reset } = require '../tasks/performTask.coffee'
+{ performTask, populate, reset } = require '../../tasks/performTask.coffee'
 
 host = process.env.HOST or '127.0.0.1'
 port = process.env.PORT or 3000
@@ -19,21 +19,21 @@ describe 'read', ->
     describe 'Test GET /drinks endpoint (read)', ->
         it 'should return a JSON formatted list', ->
             { data } = await axios.get "#{baseUrl}/drinks?format=json"
-            jsonFile = resolve __dirname, 'mocks/data.json'
+            jsonFile = resolve __dirname, '..', 'mocks/data.json'
             jsonData = require jsonFile
             expect data
                 .to.be.eql jsonData
 
         it 'should return a YAML formatted list', ->
             { data } = await axios.get "#{baseUrl}/drinks?format=yaml"
-            yamlFile = resolve __dirname, 'mocks/data.yml'
+            yamlFile = resolve __dirname, '..', 'mocks/data.yml'
             yamlData = await fs.readFile yamlFile, 'utf-8'
             expect data
                 .to.be.equal yamlData
 
         it 'should return a XML formatted list', ->
             { data } = await axios.get "#{baseUrl}/drinks?format=xml"
-            xmlFile = resolve __dirname, 'mocks/data.xml'
+            xmlFile = resolve __dirname, '..', 'mocks/data.xml'
             xmlData = await fs.readFile xmlFile, 'utf-8'
             expect data
                 .to.be.equal xmlData
@@ -75,10 +75,10 @@ describe 'read', ->
                 .to.be.equal document
 
         it 'should return a XML formatted document', ->
-            XML = await import('../build/utils/xml.js')
+            XML = await import('../../build/utils/xml.js')
             id = '627d236bc4df74966b2fddd4'
             { data } = await axios.get "#{baseUrl}/drinks/#{id}?format=xml"
-            xmlFile = resolve __dirname, 'mocks/whiteTea.xml'
+            xmlFile = resolve __dirname, '..', 'mocks/whiteTea.xml'
             document = await fs.readFile xmlFile, 'utf-8'
             expect data
                 .to.be.equal document
