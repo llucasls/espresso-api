@@ -10,7 +10,7 @@ switch fileName
         error 'error: cannot execute script\n'
         error 'In order to run this script,
             you should rather use the following command:'
-        error '\x1b[32myarn run dev\x1b[00m'
+        error '\x1b[32myarn dev\x1b[00m'
     when 'test-mocha.sh'
         error 'error: cannot execute script\n'
         error 'In order to run this script,
