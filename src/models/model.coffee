@@ -39,8 +39,8 @@ class Model
             .then (conn) ->
                 conn
                     .collection table
-                    .findOneAndUpdate { _id: new ObjectId id },
-                        $set: document,
+                    .findOneAndReplace { _id: new ObjectId id },
+                        document,
                         { returnNewDocument: yes }
         result
 
