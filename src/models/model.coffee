@@ -40,8 +40,8 @@ class Model
                 conn
                     .collection table
                     .findOneAndReplace { _id: new ObjectId id },
-                        document,
-                        { returnNewDocument: yes }
+                        document
+                        returnNewDocument: yes
         result
 
     delete: (id) ->
@@ -50,7 +50,7 @@ class Model
             .then (conn) ->
                 conn
                     .collection table
-                    .deleteOne { _id: new ObjectId id }
+                    .deleteOne _id: new ObjectId id
         result
 
 
