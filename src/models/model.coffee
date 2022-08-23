@@ -41,7 +41,7 @@ class Model
                     .collection table
                     .findOneAndUpdate { _id: new ObjectId id },
                         $set: document,
-                        { returnDocument: 'after' }
+                        { returnNewDocument: yes }
         result
 
     delete: (id) ->
