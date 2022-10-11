@@ -1,7 +1,7 @@
 #!/bin/sh
 
 if [ -t 0 ]; then
-    yarn --silent coffee tasks/printMessage.coffee "$(basename ${0})"
+    yarn --silent coffee tasks/printMessage.coffee "$(basename $0)"
     exit 10
 fi
 
