@@ -1,6 +1,6 @@
 #!/bin/sh
 
-pid="$(pgrep $(basename $0))"
+pid=$$
 pprocess="$(ps -o comm= -p $(ps -o ppid= -p $pid))"
 gpprocess="$(ps -o comm= -p $(ps -o ppid= -p $(ps -o ppid= -p $pid)))"
 
