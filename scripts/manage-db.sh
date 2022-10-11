@@ -1,6 +1,8 @@
 #!/bin/sh
 
 pid=$$
+# TODO: refactor script
+# ppid="${PPID}"
 pprocess="$(ps -o comm= -p $(ps -o ppid= -p $pid))"
 gpprocess="$(ps -o comm= -p $(ps -o ppid= -p $(ps -o ppid= -p $pid)))"
 
